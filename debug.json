@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "message": "field 'vault_id' not found in type: 'positions'",
+      "extensions": {
+        "path": "$.selectionSet.positions.selectionSet.vault_id",
+        "code": "validation-failed"
+      }
+    }
+  ]
+}

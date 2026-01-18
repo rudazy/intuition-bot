@@ -1,0 +1,186 @@
+{
+  "schema": {
+    "accounts": [
+      "atom",
+      "atom_id",
+      "atoms",
+      "atoms_aggregate",
+      "cached_image",
+      "deposits_received",
+      "deposits_received_aggregate",
+      "deposits_sent",
+      "deposits_sent_aggregate",
+      "fee_transfers",
+      "fee_transfers_aggregate",
+      "id",
+      "image",
+      "label",
+      "positions",
+      "positions_aggregate",
+      "redemptions_received",
+      "redemptions_received_aggregate",
+      "redemptions_sent",
+      "redemptions_sent_aggregate",
+      "signals",
+      "signals_aggregate",
+      "triples",
+      "triples_aggregate",
+      "type"
+    ],
+    "positions": [
+      "account",
+      "account_id",
+      "block_number",
+      "created_at",
+      "curve_id",
+      "id",
+      "log_index",
+      "shares",
+      "term",
+      "term_id",
+      "total_deposit_assets_after_total_fees",
+      "total_redeem_assets_for_receiver",
+      "transaction_hash",
+      "transaction_index",
+      "updated_at",
+      "vault"
+    ],
+    "vaults": [
+      "block_number",
+      "created_at",
+      "current_share_price",
+      "curve_id",
+      "deposits",
+      "deposits_aggregate",
+      "log_index",
+      "market_cap",
+      "position_count",
+      "positions",
+      "positions_aggregate",
+      "redemptions",
+      "redemptions_aggregate",
+      "share_price_change_stats_daily",
+      "share_price_change_stats_hourly",
+      "share_price_change_stats_monthly",
+      "share_price_change_stats_weekly",
+      "share_price_changes",
+      "share_price_changes_aggregate",
+      "signals",
+      "signals_aggregate",
+      "term",
+      "term_id",
+      "total_assets",
+      "total_shares",
+      "transaction_hash",
+      "updated_at"
+    ],
+    "atoms": [
+      "accounts",
+      "accounts_aggregate",
+      "as_object_predicate_objects",
+      "as_object_predicate_objects_aggregate",
+      "as_object_triples",
+      "as_object_triples_aggregate",
+      "as_predicate_predicate_objects",
+      "as_predicate_predicate_objects_aggregate",
+      "as_predicate_triples",
+      "as_predicate_triples_aggregate",
+      "as_subject_triples",
+      "as_subject_triples_aggregate",
+      "block_number",
+      "cached_image",
+      "controller",
+      "created_at",
+      "creator",
+      "creator_id",
+      "data",
+      "emoji",
+      "image",
+      "label",
+      "log_index",
+      "positions",
+      "positions_aggregate",
+      "raw_data",
+      "resolving_status",
+      "signals",
+      "signals_aggregate",
+      "term",
+      "term_id",
+      "transaction_hash",
+      "type",
+      "updated_at",
+      "value",
+      "value_id",
+      "wallet_id"
+    ],
+    "triples": [
+      "block_number",
+      "counter_positions",
+      "counter_positions_aggregate",
+      "counter_term",
+      "counter_term_id",
+      "created_at",
+      "creator",
+      "creator_id",
+      "object",
+      "object_id",
+      "positions",
+      "positions_aggregate",
+      "predicate",
+      "predicate_id",
+      "subject",
+      "subject_id",
+      "term",
+      "term_id",
+      "transaction_hash",
+      "triple_term",
+      "triple_vault"
+    ]
+  },
+  "live_data": {
+    "data": {
+      "accounts": [
+        {
+          "id": "0xFAa096a92c0F4A4900F64Be56189632ea36d0F4b"
+        }
+      ],
+      "positions": [
+        {
+          "shares": "2628554325253802627"
+        },
+        {
+          "shares": "30423505360082182200"
+        },
+        {
+          "shares": "1030007971968661431"
+        },
+        {
+          "shares": "19173433046983855"
+        },
+        {
+          "shares": "29475000000000000"
+        },
+        {
+          "shares": "1904545130748020756"
+        },
+        {
+          "shares": "687750000000000097"
+        },
+        {
+          "shares": "2188584169581466"
+        },
+        {
+          "shares": "682088886075448224"
+        },
+        {
+          "shares": "286611955017896832"
+        }
+      ],
+      "atoms": [
+        {
+          "label": "0xFAa0...0F4b"
+        }
+      ]
+    }
+  }
+}
