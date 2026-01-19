@@ -377,7 +377,7 @@ async def reputation(ctx, identifier: str = None):
         )
         embed.set_author(name='Intuition Network')
 
-        display_label = stats['label'] if stats['label'] else f'0x0...{wallet[-3:]}'
+        display_label = stats['label'] if stats['label'] else f'0x{wallet[2]}...{wallet[-2:]}'
         
         embed.add_field(name='Identity', value=display_label, inline=True)
         embed.add_field(name='Utilization', value=stats['utilization'], inline=True)
@@ -393,18 +393,39 @@ async def reputation(ctx, identifier: str = None):
         await msg.edit(content='Failed to fetch Intuition data. Please try again later.')
 
 
-@bot.command(name='unlink')
-async def unlink_wallet(ctx, nickname: str):
-    """Remove a nickname from the registry."""
+@bot.command(name='link')
+async def link_wallet(ctx, wallet: str, nickname: str):
+    """Link a wallet address to a nickname."""
+    # Delete the user's command message for privacy
+    try:
+        await ctx.message.delete()
+    except:
+        pass
+
+    if not is_valid_address(wallet):
+        msg = await ctx.send('Invalid wallet address.')
+        await asyncio.sleep(3)
+        await msg.delete()
+        return
+
     nickname_clean = nickname.lower().strip()
-    
-    success = await db.unlink_wallet(nickname_clean)
+    if len(nickname_clean) < 2 or len(nickname_clean) > 32:
+        msg = await ctx.send('Nickname must be between 2 and 32 characters.')
+        await asyncio.sleep(3)
+        await msg.delete()
+        return
+
+    success = await db.link_wallet(nickname_clean, wallet.lower())
     
     if success:
-        await ctx.send(f'Removed **{nickname_clean}** from registry.')
-        logger.info(f'Unlinked {nickname_clean}')
+        logger.info(f'Linked {nickname_clean} to 0x{wallet[2]}...{wallet[-2:]}')
+        msg = await ctx.send(f'Linked **{nickname_clean}** successfully.')
+        await asyncio.sleep(3)
+        await msg.delete()
     else:
-        await ctx.send(f'Nickname **{nickname_clean}** not found.')
+        msg = await ctx.send('Failed to save link. Please try again.')
+        await asyncio.sleep(3)
+        await msg.delete()
 
 
 @bot.command(name='stats')
