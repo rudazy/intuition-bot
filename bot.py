@@ -324,27 +324,6 @@ async def on_command_error(ctx, error):
         await ctx.send('An error occurred while processing your request.')
 
 
-@bot.command(name='link')
-async def link_wallet(ctx, wallet: str, nickname: str):
-    """Link a wallet address to a nickname."""
-    if not is_valid_address(wallet):
-        await ctx.send('Invalid wallet address. Must be a valid Ethereum address.')
-        return
-
-    nickname_clean = nickname.lower().strip()
-    if len(nickname_clean) < 2 or len(nickname_clean) > 32:
-        await ctx.send('Nickname must be between 2 and 32 characters.')
-        return
-
-    success = await db.link_wallet(nickname_clean, wallet.lower())
-    
-    if success:
-        logger.info(f'Linked {nickname_clean} to {wallet[:10]}...')
-        await ctx.send(f'Linked **{nickname_clean}** to wallet `{wallet[:6]}...{wallet[-4:]}`')
-    else:
-        await ctx.send('Failed to save link. Please try again.')
-
-
 @bot.command(name='rep')
 async def reputation(ctx, identifier: str = None):
     """Fetch Intuition reputation for a nickname or wallet."""
