@@ -1,6 +1,4 @@
 discord.py==2.6.4
-web3==7.14.0
 python-dotenv==1.0.1
-requests==2.32.3
 aiohttp==3.13.3
 asyncpg==0.30.0
