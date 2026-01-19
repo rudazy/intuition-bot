@@ -378,7 +378,9 @@ async def link_wallet(ctx, wallet: str, nickname: str):
     # Delete the user's command message for privacy
     try:
         await ctx.message.delete()
-    except:
+    except discord.errors.Forbidden:
+        pass
+    except discord.errors.NotFound:
         pass
 
     if not is_valid_address(wallet):
@@ -397,7 +399,7 @@ async def link_wallet(ctx, wallet: str, nickname: str):
     success = await db.link_wallet(nickname_clean, wallet.lower())
     
     if success:
-        logger.info(f'Linked {nickname_clean} to 0x{wallet[2]}...{wallet[-2:]}')
+        logger.info(f'Linked {nickname_clean} successfully')
         msg = await ctx.send(f'Linked **{nickname_clean}** successfully.')
         await asyncio.sleep(3)
         await msg.delete()
@@ -435,10 +437,10 @@ def main():
         bot.run(TOKEN)
     except discord.LoginFailure:
         logger.error('Invalid Discord token')
-    except KeyboardInterrupt:
-        logger.info('Bot stopped by user')
+    except discord.LoginFailure:
+        logger.error('Invalid Discord token')
     except Exception as e:
-        logger.error(f'Bot crashed: {e}')
+        logger.error(f'Bot error: {type(e).__name__}')
 
 
 if __name__ == '__main__':
