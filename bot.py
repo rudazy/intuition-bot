@@ -377,13 +377,13 @@ async def reputation(ctx, identifier: str = None):
         )
         embed.set_author(name='Intuition Network')
 
-        display_label = stats['label'] if stats['label'] else f'{wallet[:6]}...{wallet[-4:]}'
+        display_label = stats['label'] if stats['label'] else f'0x0...{wallet[-3:]}'
         
         embed.add_field(name='Identity', value=display_label, inline=True)
         embed.add_field(name='Utilization', value=stats['utilization'], inline=True)
         embed.add_field(name='Network Activity', value=f"{stats['activity']} Actions", inline=True)
         embed.add_field(name='TRUST Staked', value=f"**{stats['staked']:,.2f}**", inline=False)
-        embed.set_footer(text='Intuition Mainnet | Data via GraphQL API')
+        embed.set_footer(text='Intuition Mainnet')
 
         await msg.edit(content=None, embed=embed)
         logger.info(f'Fetched rep for {identifier_clean}: {stats["staked"]:.2f} TRUST')
